@@ -254,7 +254,6 @@
             });
         });
     }
-    //# sourceMappingURL=tape-modern.esm.js.map
 
     function createCommonjsModule(fn, module) {
     	return module = { exports: {} }, fn(module, module.exports), module.exports;

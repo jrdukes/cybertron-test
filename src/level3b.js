@@ -1,6 +1,6 @@
-import { test } from 'tape-modern'
-import { map, filter, reduce, compose } from 'ramda'
-import capitalizeWords from './lib/capitalize'
+import { test } from 'tape-modern';
+import { map, filter, reduce, compose } from 'ramda';
+import capitalizeWords from './lib/capitalize';
 
 const cars = [
   {
@@ -51,46 +51,46 @@ const cars = [
     year: 2006,
     salesPrice: 30000
   }
-]
+];
 
 /* Level 3 - Paintings */
 export default function() {
   const ex1 =
-    'Use map to transform the list of auto models to uppercase the first letter of each word'
+    'Use map to transform the list of auto models to uppercase the first letter of each word';
   const exercise1 = _ => {
-    return []
-  }
+    return [];
+  };
 
-  const ex2 = 'Use filter to return a list of cars made between 2001-2004'
+  const ex2 = 'Use filter to return a list of cars made between 2001-2004';
   const exercise2 = _ => {
-    return []
-  }
+    return [];
+  };
 
   const ex3 =
-    'Use reduce to count the number of cars that were made in the 2000s'
+    'Use reduce to count the number of cars that were made in the 2000s';
   const exercise3 = _ => {
-    return 0
-  }
+    return 0;
+  };
 
   const ex4 =
-    'Use map, filter and reduce with compose to return the price of the the most expensive car from the 2000s '
+    'Use map, filter and reduce with compose to return the price of the the most expensive car from the 2000s ';
   const exercise4 = _ => {
-    return 0
-  }
+    return 0;
+  };
 
   const ex5 = `Use map to transform the salesPrice to USD currency format (ex: $400,000.00)
 
     ** Hint: Check MDN for the toLocaleString method on the Number Object **
-    `
+    `;
   const exercise5 = _ => {
-    return []
-  }
+    return [];
+  };
 
-  const ex6 = `Use compose and filter to return cars with V8s, map over them and return the names of the cars with the first letter capitalized.`
+  const ex6 = `Use compose and filter to return cars with V8s, map over them and return the names of the cars with the first letter capitalized.`;
 
   const exercise6 = _ => {
-    return []
-  }
+    return [];
+  };
 
   /* tests to validate exercises go here */
   test('test', assert => {
@@ -98,7 +98,7 @@ export default function() {
       exercise1(),
       ['Silverado', 'Grand Prix', 'Deville', 'Land Cruiser', 'Civic', 'Sierra'],
       ex1
-    )
+    );
 
     assert.same(
       exercise2(),
@@ -137,9 +137,9 @@ export default function() {
         }
       ],
       ex2
-    )
-    assert.same(exercise3(), 5, ex3)
-    assert.same(exercise4(), 40000, ex4)
+    );
+    assert.same(exercise3(), 5, ex3);
+    assert.same(exercise4(), 40000, ex4);
     assert.same(exercise5(), [
       '$29,000.00',
       '$32,000.00',
@@ -147,11 +147,11 @@ export default function() {
       '$40,000.00',
       '$29,000.00',
       '$30,000.00'
-    ])
+    ]);
     assert.same(
       exercise6(),
       ['Silverado', 'Deville', 'Land Cruiser', 'Sierra'],
       ex6
-    )
-  })
+    );
+  });
 }

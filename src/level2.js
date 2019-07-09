@@ -1,5 +1,5 @@
-import { test } from 'tape-modern'
-import { map, filter, reduce, compose } from 'ramda'
+import { test } from 'tape-modern';
+import { map, filter, reduce, compose, prop } from 'ramda';
 
 const clients = [
   {
@@ -110,48 +110,56 @@ const clients = [
     },
     registered: '2015-02-01T11:16:26 +05:00'
   }
-]
+];
+const fullname = o => `${prop('first', o)} ${prop('last', o)}`;
 
 export default function() {
   /* Level 2 - colors */
 
   const ex1 =
-    'Use map to return a concatenated first and last name of each client.'
+    'Use map to return a concatenated first and last name of each client.';
   const exercise1 = _ => {
-    return []
-  }
+    function createFullname(client) {
+      return { fullname: fullname(client), ...client };
+    }
 
-  const ex2 = 'Use filter to return clients from Wyoming'
+    return map(createFullname, clients);
+  };
+
+  const ex2 = 'Use filter to return clients from Wyoming';
   const exercise2 = _ => {
-    return []
-  }
+    function isWyoming(clients) {
+      return clients.city === 'Wyoming';
+    }
+    return filter(isWyoming, clients);
+  };
 
-  const ex3 = 'Use reduce to count the number of people with green eyes '
+  const ex3 = 'Use reduce to count the number of people with green eyes ';
   const exercise3 = _ => {
-    return 0
-  }
+    return 0;
+  };
 
-  const ex4 = `Use map, filter and reduce with compose to return the full name (as a string) of the female from Wyoming. `
+  const ex4 = `Use map, filter and reduce with compose to return the full name (as a string) of the female from Wyoming. `;
   const exercise4 = _ => {
-    return null
-  }
+    return null;
+  };
 
   const ex5 =
-    'Use map and filter to return the full address of the clients living in North Carolina'
+    'Use map and filter to return the full address of the clients living in North Carolina';
   const exercise5 = _ => {
-    return []
-  }
+    return [];
+  };
 
-  const ex6 = 'use filter to remove anyone over the age of 25'
+  const ex6 = 'use filter to remove anyone over the age of 25';
   const exercise6 = _ => {
-    return []
-  }
+    return [];
+  };
 
   const ex7 =
-    'use reduce to count the number of males, age 22 - 27, who have green eyes'
+    'use reduce to count the number of males, age 22 - 27, who have green eyes';
   const exercise7 = _ => {
-    return 0
-  }
+    return 0;
+  };
 
   /* tests to validate exercises go here */
   test('test', assert => {
@@ -166,7 +174,7 @@ export default function() {
         'Hurst Adkins'
       ],
       ex1
-    )
+    );
     assert.same(
       exercise2(),
       [
@@ -208,14 +216,14 @@ export default function() {
         }
       ],
       ex2
-    )
-    assert.same(exercise3(), 4, ex3)
-    assert.same(exercise4(), 'Sandra Hogan', ex4)
+    );
+    assert.same(exercise3(), 4, ex3);
+    assert.same(exercise4(), 'Sandra Hogan', ex4);
     assert.same(
       exercise5(),
       ['342 Gelston Avenue Asheville, North Carolina 28801'],
       ex5
-    )
+    );
     assert.same(
       exercise6(),
       [
@@ -258,6 +266,6 @@ export default function() {
       ],
       ex6
     ),
-      assert.same(exercise7(), 2, ex7)
-  })
+      assert.same(exercise7(), 2, ex7);
+  });
 }

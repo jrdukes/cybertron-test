@@ -27,7 +27,10 @@ export default function() {
   const ex3 = 'use reduce to sum the numbers';
   const exercise3 = _ => {
     const numbers = [10, 20, 30, 40, 50, 60];
-    return 0; // return answer here
+    function reducer(acc, value) {
+      return acc + value;
+    }
+    return reduce(reducer, 0, numbers);
   };
 
   const ex4 = `use compose to run the following three commands
@@ -36,21 +39,50 @@ export default function() {
 2. use filter and keep the even numbers
 3. use reduce to add the resulting numbers
 `;
+
   const exercise4 = _ => {
     const numbers = [1, 3, 6, 10, 13, 16];
-    return 0; // return answer here
+    function triple(n) {
+      return n * n * n;
+    }
+    function isEven(n) {
+      return n % 2 === 0;
+    }
+    function inc(a, b) {
+      return a + 1;
+    }
+    const tripledNumbers = map(triple, numbers);
+    console.log(tripledNumbers);
+    const onlyEvenNumbers = filter(isEven, tripledNumbers);
+    console.log(onlyEvenNumbers);
+
+    // Able to map over numbers and triple each number.
+    // Able to use reduce to add the resulting numbers.
+    // Currently unable to use compose on map, filter, reduce and unable to use reduce add resulting numbers.
+
+    return compose(
+      reduce(inc, 0),
+      filter(isEven),
+      map(triple)
+    )(numbers);
   };
 
   const ex5 = 'Use map to find the square root of each number';
   const exercise5 = _ => {
     const numbers = [9, 16, 25, 36, 49, 64, 81];
-    return []; // return answer here
+    const squareRoot = function(v) {
+      return Math.sqrt(v);
+    };
+    return map(squareRoot, numbers);
   };
 
   const ex6 = 'use filter to return numbers between 10 and 20';
   const exercise6 = _ => {
     const numbers = [1, 5, 6, 3, 10, 12, 18, 21, 28, 34, 39, 45];
-    return []; // return answer here
+    const between10And20 = function(v) {
+      return v > 10 && v < 20;
+    };
+    return filter(between10And20, numbers);
   };
 
   const ex7 = `use compose and the checkPrimes function to run the following three commands:
@@ -64,7 +96,27 @@ export default function() {
   `;
   const exercise7 = _ => {
     const numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-    return 0; // return answer here
+    function minusOne(n) {
+      return n - 1;
+    }
+    function inc(a, b) {
+      return a + 1;
+    }
+    const minusOneNumbers = map(minusOne, numbers);
+    console.log(minusOneNumbers);
+    const onlyPrimeNumbers = filter(checkPrimes, minusOne);
+    console.log(onlyPrimeNumbers);
+
+    // Able to use map to subtract 1 from each number.
+    // Currently unable to filter to return all prime numbers.
+    // Currently unable to use reduce to count the number of prime numbers in the array.
+    // Currently unable to use compose to run map, filter, reduce.
+
+    return compose(
+      reduce(inc, 0),
+      filter(checkPrimes),
+      map(minusOne)
+    )(numbers);
   };
 
   /* tests to validate exercises go here */

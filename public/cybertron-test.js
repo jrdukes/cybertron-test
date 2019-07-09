@@ -1216,12 +1216,11 @@
       const ex2 = 'use filter to only return numbers divisible by 6';
       const exercise2 = _ => {
         const numbers = [28, 42, 55, 66, 72, 84, 93];
-        const results = numbers.filter(function(n) {
-          return n % 6 === 0;
-        });
-        console.log(results);
+        const results = function(num) {
+          return !(num % 6);
+        };
 
-        return filter(results);
+        return filter(results, numbers);
       };
 
       const ex3 = 'use reduce to sum the numbers';
